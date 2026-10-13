@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海报E · 学在科大之立志楼（街头贴纸版）</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#1c1c1e;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#111;display:flex;flex-direction:column;align-items:center;padding:34px 16px}
+  .poster{position:relative;width:750px;max-width:100%;min-height:1250px;padding:56px 44px 48px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 30px rgba(0,0,0,.6);background:url('bg5.jpg') center top/cover no-repeat}
+  .poster>*{position:relative;z-index:1}
+  .stickerTop{align-self:flex-start;display:inline-block;background:#e8ff47;color:#111;font-weight:800;font-size:13px;letter-spacing:.28em;padding:7px 16px 7px 19px;transform:rotate(1.6deg);box-shadow:0 3px 10px rgba(0,0,0,.45)}
+  h1{align-self:flex-start;display:inline-block;background:#fdfdf8;color:#111;font-weight:900;font-size:32px;letter-spacing:.02em;padding:12px 20px;margin-top:14px;transform:rotate(-1.8deg);box-shadow:0 4px 14px rgba(0,0,0,.5);white-space:nowrap}
+  h1 i{font-style:normal;color:#ff3ea5}
+  .mid{flex:1}
+  .tape{position:absolute;width:92px;height:26px;background:rgba(232,255,71,.85);transform:rotate(-4deg);box-shadow:0 2px 6px rgba(0,0,0,.3)}
+  .flyer{position:relative;background:#fdfdf8;border:3px solid #111;padding:24px 26px 18px;transform:rotate(.9deg);box-shadow:0 8px 26px rgba(0,0,0,.55)}
+  .flyer .pin{position:absolute;top:-11px;left:50%;transform:translateX(-50%);width:22px;height:22px;border-radius:50%;background:radial-gradient(circle at 35% 32%,#ff6b6b,#c81e1e 60%,#7d0f0f);box-shadow:0 3px 6px rgba(0,0,0,.5)}
+  .flyer .org{font-size:12px;letter-spacing:.18em;color:#555;border-bottom:1px dashed #bbb;padding-bottom:8px;display:flex;justify-content:space-between;align-items:center}
+  .flyer h2{font-size:26px;font-weight:900;letter-spacing:.06em;margin-top:12px;line-height:1.4}
+  .flyer h2 mark{background:#e8ff47;padding:0 4px}
+  .flyer .sub{font-size:13.5px;color:#444;margin-top:6px}
+  .qrzone{display:flex;align-items:center;gap:20px;margin-top:16px}
+  .qrzone img{width:132px;height:132px;display:block;background:#fff;border:3px solid #111;flex:none}
+  .qrtext{font-size:13.5px;line-height:1.95;color:#222}
+  .qrtext b{font-size:15.5px;display:block;letter-spacing:.1em}
+  .url{word-break:break-all;background:#f0f0ea;border-radius:4px;padding:2px 7px;font-size:12px}
+  .tags{margin-top:6px;font-size:12px;color:#333}
+  .tags mark{background:#e8ff47;padding:0 3px;font-weight:700}
+  .team{margin-top:14px;border-top:1px dashed #bbb;padding-top:9px;font-size:12.5px;color:#333;letter-spacing:.04em}
+  .team span.lb{display:inline-block;width:5.2em;color:#777}
+  .tip{margin-top:18px;font-size:13px;color:#777;text-align:center}
+  @media print{
+    body{background:#fff;padding:0}
+    .poster{box-shadow:none;width:100%}
+    .tip{display:none}
+  }
+  @media (max-width:600px){
+    .poster{padding:38px 22px 32px;min-height:1100px}
+    h1{font-size:22px;white-space:normal}
+    .flyer{padding:18px 16px 14px}
+    .flyer h2{font-size:20px}
+    .qrzone img{width:104px;height:104px}
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <span class="stickerTop">SURVEY STICKER · 问卷上线</span>
+    <h1>学在科大之立志楼<i>。</i></h1>
+    <div class="mid"></div>
+    <div class="flyer">
+      <div class="pin"></div>
+      <div class="org"><span>26级建筑学1班 · 2班 · 409-2课程小组</span><span>NO.005</span></div>
+      <h2>学习空间使用情况<mark>调查</mark></h2>
+      <p class="sub">立志楼（A栋 / B栋）· 老师和同学们都可以填 · 满 13 题只要约 3 分钟</p>
+      <div class="qrzone">
+        <img src="qr.png" alt="问卷二维码">
+        <div class="qrtext">
+          <b>扫码填写问卷</b>
+          或访问链接<br>
+          <span class="url">https://laizhouningKING.github.io/lizhilou-survey/</span>
+          <div class="tags"><mark>匿名填写</mark> ｜ 仅用于课程研究 ｜ 你的回答会成为空间改造的依据</div>
+        </div>
+      </div>
+      <div class="team"><span class="lb">项目团队</span>王越豪 · 贾子琰 · 赖周宁 · 高为政 · 范鋆泽 · 李熙哲</div>
+    </div>
+  </div>
+  <div class="tip">截图或打印即可分享 · A4 竖版打印效果最佳</div>
+</body>
+</html>
