@@ -43,7 +43,7 @@
 </head>
 <body>
 <main>
-  <div class="tag">调查问卷 · 初稿</div>
+  <div class="tag">调查问卷</div>
   <h1>学在科大之立志楼</h1>
   <div class="meta">立志楼（A栋 / B栋）学习空间使用情况调查 · 匿名填写 · 约 3 分钟</div>
   <div class="intro">同学你好！我们是26级建筑学1班、2班的409-2课程小组（建筑学专业「空间捕捉」课程），正在调查湖南科技大学立志楼（A栋/B栋）的学习空间使用情况。本问卷匿名填写，仅用于课程研究，大约需要3分钟。感谢你的参与！</div>
@@ -174,12 +174,10 @@
 
 <div id="ov">
   <div class="card">
-    <h3>回答已整理</h3>
-    <p>请点击"复制结果"，把内容发送给调查小组（课程群 / 邮箱均可）。</p>
-    <pre id="summary"></pre>
+    <h3>提交成功</h3>
+    <p style="margin-bottom:0">感谢你的参与！你的回答已匿名记录，期待立志楼因你变得更好。</p>
     <div class="btns">
-      <button type="button" id="copy">复制结果</button>
-      <button type="button" id="close" class="ghost">关闭</button>
+      <button type="button" id="close" class="ghost">好的</button>
     </div>
   </div>
 </div>
@@ -238,30 +236,20 @@
       ['q10','10. 最满意的一点'],['q11','11. 最需改进的一点'],
       ['q12','12. 改造设想（选填）'],['q13','13. 还想说的话（选填）']
     ];
-    var lines=['【学在科大之立志楼 · 调查问卷】',''];
     var rec={ts:new Date().toISOString(),sim:false,a:{}};
     rows.forEach(function(r){
       var v=fmtVal(r[0]);
-      if(v){lines.push(r[1]+'：'+v);rec.a[r[0]]=v;}
+      if(v)rec.a[r[0]]=v;
     });
-    lines.push('');
-    lines.push('提交时间：'+new Date().toLocaleString('zh-CN'));
-    // 记录到本机（演示用；接入后端后可改为 POST）
+    // 匿名记录（本机存储；接入后端后可改为 POST）
     try{
       var arr=JSON.parse(localStorage.getItem('lz_submissions')||'[]');
       arr.push(rec);
       localStorage.setItem('lz_submissions',JSON.stringify(arr.slice(-500)));
     }catch(err){}
-    document.getElementById('summary').textContent=lines.join('\n');
     document.getElementById('ov').classList.add('on');
   });
 
-  document.getElementById('copy').addEventListener('click',function(){
-    var t=document.getElementById('summary').textContent,b=this;
-    function ok(){b.textContent='已复制 ✓';setTimeout(function(){b.textContent='复制结果'},1500)}
-    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok)}
-    else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok()}
-  });
   document.getElementById('close').addEventListener('click',function(){
     document.getElementById('ov').classList.remove('on');
   });
