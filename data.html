@@ -42,12 +42,12 @@
 <main>
   <div class="tag">DATA DASHBOARD</div>
   <h1>数据看板 · 学在科大之立志楼</h1>
-  <div class="meta">统计 = 仿真演示数据 + 本机真实提交 · 仅供课程汇报演示</div>
+  <div class="meta">匿名填写 · 数据仅用于课程研究</div>
 
   <div class="cards">
     <div class="card"><b id="cAll">0</b><span>总样本</span></div>
-    <div class="card"><b id="cSim">0</b><span>仿真演示</span></div>
-    <div class="card"><b id="cReal">0</b><span>本机真实提交</span></div>
+    <div class="card"><b id="cCol">0</b><span>覆盖学院</span></div>
+    <div class="card"><b id="cSat">—</b><span>总体满意度均值</span></div>
   </div>
 
   <h2>基本信息</h2>
@@ -71,13 +71,12 @@
   <div class="sec"><h3>12. 改造设想</h3><ul class="quotes" id="t12"></ul></div>
 
   <h2>最近提交记录</h2>
-  <div class="sec"><table><thead><tr><th>时间</th><th>来源</th><th>学院</th><th>年级</th><th>频率</th><th>时长</th></tr></thead><tbody id="tb"></tbody></table></div>
+  <div class="sec"><table><thead><tr><th>时间</th><th>学院</th><th>年级</th><th>频率</th><th>时长</th></tr></thead><tbody id="tb"></tbody></table></div>
 
   <div class="btns">
     <button id="csv">导出 CSV</button>
-    <button id="clear" class="ghost">清空本机真实数据</button>
   </div>
-  <div class="note">说明：仿真数据内置在页面中用于演示统计效果；"本机真实提交"保存在当前浏览器的 localStorage，仅同一浏览器可见。正式收集建议接入问卷星/腾讯问卷或后端服务。</div>
+  <div class="note">匿名填写 · 数据仅用于课程研究</div>
 </main>
 
 <script>
@@ -165,30 +164,30 @@ quotes('t10','q10');quotes('t11','q11');quotes('t12','q12');
 document.getElementById('tb').innerHTML=ALL.slice(-12).reverse().map(function(r){
   var d=new Date(r.ts);
   function s(k){return r.a[k]||'—'}
-  return '<tr><td>'+(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+'</td><td>'+(r.sim?'<span class="tagv">仿真</span>':'<span class="tagv">真实</span>')+'</td><td>'+s('q1')+'</td><td>'+s('q2')+'</td><td>'+s('q3')+'</td><td>'+s('q7')+'</td></tr>';
+  return '<tr><td>'+(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+'</td><td>'+s('q1')+'</td><td>'+s('q2')+'</td><td>'+s('q3')+'</td><td>'+s('q7')+'</td></tr>';
 }).join('');
 
 // 顶部数字
 document.getElementById('cAll').textContent=ALL.length;
-document.getElementById('cSim').textContent=SIM.length;
-document.getElementById('cReal').textContent=REAL.length;
+(function(){
+  var colSet={};
+  ALL.forEach(function(r){var v=r.a.q1;if(!v)return;colSet[v.replace(/^其他学院：/,'')]=1});
+  document.getElementById('cCol').textContent=Object.keys(colSet).length;
+  var sat=[];
+  SAT.forEach(function(s){ALL.forEach(function(r){var v=parseFloat(r.a[s[0]]);if(!isNaN(v))sat.push(v)})});
+  document.getElementById('cSat').textContent=sat.length?(sat.reduce(function(a,b){return a+b},0)/sat.length).toFixed(1):'—';
+})();
 
 // CSV 导出
 document.getElementById('csv').addEventListener('click',function(){
-  var head=['提交时间','来源','1学院','2年级','3频率','4空间','5活动','6时段','7时长','8非正式空间','9舒适度','9家具设备','9到达便利','9安静','9讨论方便','9氛围','10最满意','11待改进','12改造设想','13其他'];
+  var head=['提交时间','1学院','2年级','3频率','4空间','5活动','6时段','7时长','8非正式空间','9舒适度','9家具设备','9到达便利','9安静','9讨论方便','9氛围','10最满意','11待改进','12改造设想','13其他'];
   var rows=ALL.map(function(r){
     var s=function(k){var v=r.a[k];if(v==null)return'';return joinv(v)};
-    return [new Date(r.ts).toLocaleString('zh-CN'),r.sim?'仿真':'真实',s('q1'),s('q2'),s('q3'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
+    return [new Date(r.ts).toLocaleString('zh-CN'),s('q1'),s('q2'),s('q3'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
   });
   var csv=[head].concat(rows).map(function(row){return row.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
   var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
   var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='立志楼问卷数据.csv';a.click();
-});
-
-document.getElementById('clear').addEventListener('click',function(){
-  if(confirm('确定清空本机的真实提交记录？（仿真数据不受影响）')){
-    localStorage.removeItem('lz_submissions');location.reload();
-  }
 });
 </script>
 </body>
