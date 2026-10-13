@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海报D · 学在科大之立志楼（报纸号外版）</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#e8e0d0;font-family:"Noto Serif SC","Source Han Serif SC","STSong","SimSun",serif;color:#2a2620;display:flex;flex-direction:column;align-items:center;padding:34px 16px}
+  .poster{position:relative;width:750px;max-width:100%;min-height:1250px;padding:44px 52px 40px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 24px rgba(60,45,20,.35);background:url('bg4.jpg') center top/cover no-repeat}
+  .poster::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(240,232,214,.88) 0%,rgba(240,232,214,.8) 20%,rgba(240,232,214,0) 30%,rgba(240,232,214,0) 63%,rgba(240,232,214,.82) 74%,rgba(240,232,214,.9) 100%)}
+  .poster>*{position:relative;z-index:1}
+  .frame{position:absolute;inset:14px;border:1px solid #2a2620;pointer-events:none;z-index:2}
+  .frame::after{content:'';position:absolute;inset:4px;border:1px solid rgba(42,38,32,.55)}
+  .masthead-top{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;letter-spacing:.18em;color:#5a5248;border-bottom:2px solid #2a2620;padding-bottom:8px}
+  .masthead{margin-top:16px;text-align:center}
+  .masthead h1{font-size:44px;font-weight:700;letter-spacing:.08em;line-height:1.3;white-space:nowrap}
+  .masthead .en{font-size:11px;letter-spacing:.42em;color:#6b6258;margin-top:8px}
+  .masthead .sub{display:inline-block;font-size:14.5px;color:#3d372f;margin-top:10px;border-top:1px solid rgba(42,38,32,.5);border-bottom:1px solid rgba(42,38,32,.5);padding:6px 14px;letter-spacing:.1em}
+  .mid{flex:1}
+  .sticker{display:inline-block;background:#b23b2e;color:#f5eddc;font-size:15px;letter-spacing:.3em;padding:7px 20px 7px 24px;box-shadow:2px 2px 0 rgba(42,38,32,.7);transform:rotate(-1.5deg)}
+  .lead{font-size:16.5px;line-height:2.05;color:#2f2a22;margin-top:18px;max-width:34em}
+  .lead b{font-weight:700;border-bottom:2px solid #b23b2e}
+  .qrzone{display:flex;align-items:center;gap:26px;margin-top:22px}
+  .qrbox{background:#f7f2e6;border:1px solid #2a2620;outline:1px solid #2a2620;outline-offset:3px;padding:12px;flex:none}
+  .qrbox img{width:150px;height:150px;display:block}
+  .qrtext{font-size:14.5px;color:#2f2a22;line-height:2}
+  .qrtext b{font-size:17px;letter-spacing:.12em;display:block;margin-bottom:2px}
+  .qrtext .tags{margin-top:6px;font-size:12.5px;letter-spacing:.08em;color:#5a5248}
+  .url{word-break:break-all;background:rgba(42,38,32,.08);border-radius:3px;padding:2px 8px;font-size:12.5px}
+  .foot{margin-top:26px;border-top:2px solid #2a2620;padding-top:14px;display:flex;justify-content:space-between;align-items:flex-end;gap:14px}
+  .foot .l{font-size:13px;color:#3d372f;line-height:1.9}
+  .foot .r{font-size:11px;letter-spacing:.3em;color:#6b6258;text-align:right;flex:none}
+  .team{margin-top:12px;font-size:14px;letter-spacing:.05em;color:#2f2a22;border-top:1px solid rgba(42,38,32,.4);padding-top:10px}
+  .team span.lb{display:inline-block;width:5.5em;color:#6b6258}
+  .tip{margin-top:18px;font-size:13px;color:#8a8074;text-align:center;font-family:-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+  @media print{
+    body{background:#fff;padding:0}
+    .poster{box-shadow:none;width:100%}
+    .tip{display:none}
+  }
+  @media (max-width:600px){
+    .poster{padding:34px 26px 30px;min-height:1100px}
+    .masthead h1{font-size:27px;white-space:normal}
+    .lead{font-size:14.5px}
+    .qrbox img{width:120px;height:120px}
+    .qrzone{gap:18px}
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="frame"></div>
+    <div class="masthead-top"><span>第 001 期 · 特刊</span><span>湖南科技大学 · 建筑学</span><span>免费传阅</span></div>
+    <div class="masthead">
+      <h1>学在科大之立志楼。</h1>
+      <div class="en">LIZHILOU OBSERVER · 空间捕捉课程特刊</div>
+      <div class="sub">立志楼（A栋 / B栋）学习空间使用情况调查</div>
+    </div>
+    <div class="mid"></div>
+    <div><span class="sticker">号外 · 请你发声</span></div>
+    <p class="lead">它从报纸里伸出手，<br>想听听你和<b>立志楼</b>的故事。<br><b>老师和同学们</b>，花 3 分钟，<br>让每一条日常都被记录。</p>
+    <div class="qrzone">
+      <div class="qrbox"><img src="qr.png" alt="问卷二维码"></div>
+      <div class="qrtext">
+        <b>扫码填写问卷</b>
+        或访问链接<br>
+        <span class="url">https://laizhouningKING.github.io/lizhilou-survey/</span>
+        <div class="tags">匿名填写 ｜ 仅用于课程研究 ｜ 约 3 分钟</div>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="l">湖南科技大学 · 立志楼（A栋 / B栋）<br>你的每一条回答，都会成为空间改造的依据。</div>
+      <div class="r">SPATIAL CAPTURE<br>SURVEY PRESS</div>
+    </div>
+    <div class="team"><span class="lb">项目团队</span>王越豪 · 贾子琰 · 赖周宁 · 高为政 · 范鋆泽 · 李熙哲</div>
+  </div>
+  <div class="tip">截图或打印即可分享 · A4 竖版打印效果最佳</div>
+</body>
+</html>
