@@ -7,35 +7,40 @@
 <style>
   *{box-sizing:border-box;margin:0;padding:0}
   body{background:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#111;display:flex;flex-direction:column;align-items:center;padding:34px 16px}
-  .poster{width:750px;max-width:100%;background:#fff;padding:72px 64px 58px;display:flex;flex-direction:column;box-shadow:0 2px 24px rgba(0,0,0,.08)}
-  .kicker{font-size:15px;letter-spacing:.35em;color:#999}
-  h1{font-size:52px;font-weight:700;line-height:1.35;margin:26px 0 0}
-  h1 em{font-style:normal;color:#999}
+  .poster{position:relative;width:750px;max-width:100%;padding:72px 64px 58px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 24px rgba(0,0,0,.12);background:url('bg.jpg') center top/cover no-repeat}
+  .poster::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,255,255,.95) 0%,rgba(255,255,255,.82) 26%,rgba(255,255,255,.5) 42%,rgba(255,255,255,.18) 58%,rgba(255,255,255,.22) 70%,rgba(255,255,255,.86) 88%,rgba(255,255,255,.95) 100%)}
+  .poster>*{position:relative;z-index:1}
+  .kicker{font-size:15px;letter-spacing:.35em;color:#777}
+  h1{font-size:52px;font-weight:700;line-height:1.35;margin:26px 0 0;text-shadow:0 1px 0 rgba(255,255,255,.6)}
+  h1 em{font-style:normal;color:#888}
+  .subt{font-size:19px;color:#666;margin-top:18px}
   .rule{height:2px;background:#111;width:56px;margin:36px 0}
-  .lead{font-size:19px;line-height:2;color:#333}
-  .lead b{background:linear-gradient(transparent 62%,#e8e8e8 62%)}
+  .lead{font-size:19px;line-height:2;color:#222}
+  .lead b{background:linear-gradient(transparent 62%,rgba(255,255,255,.95) 62%)}
   .tags{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
-  .tags span{border:1px solid #ccc;border-radius:999px;padding:5px 16px;font-size:14px;color:#555}
+  .tags span{border:1px solid rgba(0,0,0,.18);background:rgba(255,255,255,.8);border-radius:999px;padding:5px 16px;font-size:14px;color:#333}
   .qrzone{display:flex;align-items:center;gap:34px;margin-top:52px}
-  .qrzone img{width:190px;height:190px;display:block}
-  .qrtext{font-size:15px;color:#333;line-height:2}
-  .qrtext b{font-size:16px;display:block;color:#111}
-  .url{word-break:break-all;color:#888;font-size:13.5px}
-  .foot{margin-top:auto;padding-top:48px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #eee;margin-top:56px}
-  .foot .l{font-size:14px;color:#666;line-height:1.9}
-  .foot .r{font-size:13px;color:#bbb;letter-spacing:.2em}
+  .qrzone img{width:190px;height:190px;display:block;background:#fff;padding:10px;border-radius:14px;box-shadow:0 4px 18px rgba(0,0,0,.16)}
+  .qrtext{font-size:15px;color:#222;line-height:2}
+  .qrtext b{font-size:16px;display:block;color:#111;text-shadow:0 1px 2px rgba(255,255,255,.8)}
+  .url{word-break:break-all;color:#555;font-size:13.5px;background:rgba(255,255,255,.75);border-radius:6px;padding:2px 6px}
+  .foot{margin-top:auto;padding-top:48px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(0,0,0,.12);margin-top:56px}
+  .foot .l{font-size:14px;color:#444;line-height:1.9;text-shadow:0 1px 2px rgba(255,255,255,.8)}
+  .foot .r{font-size:13px;color:#888;letter-spacing:.2em}
   .tip{margin-top:18px;font-size:13px;color:#999;text-align:center}
-  .team{margin-top:26px;font-size:14px;color:#666;letter-spacing:.06em}
-  .team .low{font-size:10px;color:#ddd}
+  .team{margin-top:26px;font-size:14px;color:#444;letter-spacing:.06em;text-shadow:0 1px 2px rgba(255,255,255,.8)}
+  .team .low{font-size:10px;color:#c9c9c9}
   @media print{
     body{background:#fff;padding:0}
     .poster{box-shadow:none;width:100%}
     .tip{display:none}
+    .poster::before{-webkit-print-color-adjust:exact;print-color-adjust:exact}
   }
   @media (max-width:600px){
     .poster{padding:46px 30px 40px}
     h1{font-size:38px}
     .lead{font-size:16.5px}
+    .qrzone img{width:150px;height:150px}
   }
 </style>
 </head>
@@ -43,7 +48,7 @@
   <div class="poster">
     <div class="kicker">建筑学专业 ·「空间捕捉」课程小组</div>
     <h1>学在科大<br>之立志楼<em>。</em></h1>
-    <p style="font-size:19px;color:#888;margin-top:18px">—— 立志楼（A栋 / B栋）学习空间使用情况调查</p>
+    <p class="subt">—— 立志楼（A栋 / B栋）学习空间使用情况调查</p>
     <div class="rule"></div>
     <p class="lead">你每天走过的走廊、待到深夜的教室、<b>画图时抢不到的插座</b>——<br>都值得被听见。<br>诚邀<b>老师和同学们</b>花 3 分钟，<br>告诉我们你与立志楼的真实故事。</p>
     <div class="tags">
