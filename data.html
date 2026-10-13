@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>数据看板 · 立志楼学习空间使用情况调查</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#111;background:#fff;line-height:1.6;font-size:15px}
+  main{max-width:760px;margin:0 auto;padding:48px 20px 90px}
+  .tag{color:#999;font-size:12px;letter-spacing:.3em}
+  h1{font-size:22px;font-weight:600;margin:10px 0 6px}
+  .meta{color:#888;font-size:13px;margin-bottom:30px}
+  .cards{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:8px}
+  .card{flex:1;min-width:140px;border:1px solid #e6e6e6;border-radius:10px;padding:16px 18px}
+  .card b{display:block;font-size:28px;font-weight:600}
+  .card span{color:#888;font-size:12.5px}
+  h2{font-size:13px;color:#999;font-weight:500;margin:44px 0 14px;letter-spacing:.15em}
+  .bar{display:flex;align-items:center;gap:10px;margin:7px 0;font-size:13.5px}
+  .bar .l{width:11.5em;flex:none;color:#333}
+  .bar .track{flex:1;background:#f0f0f0;border-radius:4px;height:18px;overflow:hidden}
+  .bar .fill{height:100%;background:#111;border-radius:4px;min-width:2px}
+  .bar .v{width:3.2em;flex:none;text-align:right;color:#888;font-variant-numeric:tabular-nums}
+  .sec{border:1px solid #e6e6e6;border-radius:10px;padding:18px 20px;margin-bottom:14px}
+  .sec h3{font-size:14.5px;margin-bottom:10px}
+  ul.quotes{list-style:none}
+  ul.quotes li{padding:8px 0;border-bottom:1px dashed #eee;font-size:13.5px;color:#333}
+  ul.quotes li:last-child{border:none}
+  ul.quotes li i{font-style:normal;color:#bbb;margin-right:8px;font-variant-numeric:tabular-nums}
+  .empty{color:#bbb;font-size:13px;padding:6px 0}
+  .btns{display:flex;gap:10px;margin-top:34px;flex-wrap:wrap}
+  .btns button{background:#111;color:#fff;border:none;border-radius:8px;padding:12px 22px;font-size:14px;cursor:pointer}
+  .btns .ghost{background:#fff;color:#111;border:1px solid #ccc}
+  .note{color:#aaa;font-size:12px;margin-top:14px}
+  table{width:100%;border-collapse:collapse;font-size:13px;margin-top:6px}
+  th{color:#888;font-weight:500;text-align:left;padding:8px 6px;border-bottom:1px solid #eee;white-space:nowrap}
+  td{padding:9px 6px;border-bottom:1px solid #f2f2f2;vertical-align:top}
+  .tagv{display:inline-block;border:1px solid #ddd;border-radius:4px;padding:0 6px;font-size:11px;color:#888;margin-right:6px}
+</style>
+</head>
+<body>
+<main>
+  <div class="tag">DATA DASHBOARD</div>
+  <h1>数据看板 · 立志楼问卷</h1>
+  <div class="meta">统计 = 仿真演示数据 + 本机真实提交 · 仅供课程汇报演示</div>
+
+  <div class="cards">
+    <div class="card"><b id="cAll">0</b><span>总样本</span></div>
+    <div class="card"><b id="cSim">0</b><span>仿真演示</span></div>
+    <div class="card"><b id="cReal">0</b><span>本机真实提交</span></div>
+  </div>
+
+  <h2>基本信息</h2>
+  <div class="sec"><h3>1. 学院分布</h3><div id="b1"></div></div>
+  <div class="sec"><h3>2. 年级分布</h3><div id="b2"></div></div>
+  <div class="sec"><h3>3. 每周来访频率</h3><div id="b3"></div></div>
+
+  <h2>空间使用行为</h2>
+  <div class="sec"><h3>4. 最常使用的空间（人次）</h3><div id="b4"></div></div>
+  <div class="sec"><h3>5. 通常进行的活动（人次）</h3><div id="b5"></div></div>
+  <div class="sec"><h3>6. 通常的时间段（人次）</h3><div id="b6"></div></div>
+  <div class="sec"><h3>7. 每次停留时长</h3><div id="b7"></div></div>
+  <div class="sec"><h3>8. 非正式空间使用（人次）</h3><div id="b8"></div></div>
+
+  <h2>满意度评价（均值 / 5）</h2>
+  <div class="sec"><div id="b9"></div></div>
+
+  <h2>开放题摘录</h2>
+  <div class="sec"><h3>10. 最满意的一点</h3><ul class="quotes" id="t10"></ul></div>
+  <div class="sec"><h3>11. 最需要改进的一点</h3><ul class="quotes" id="t11"></ul></div>
+  <div class="sec"><h3>12. 改造设想</h3><ul class="quotes" id="t12"></ul></div>
+
+  <h2>最近提交记录</h2>
+  <div class="sec"><table><thead><tr><th>时间</th><th>来源</th><th>学院</th><th>年级</th><th>频率</th><th>时长</th></tr></thead><tbody id="tb"></tbody></table></div>
+
+  <div class="btns">
+    <button id="csv">导出 CSV</button>
+    <button id="clear" class="ghost">清空本机真实数据</button>
+  </div>
+  <div class="note">说明：仿真数据内置在页面中用于演示统计效果；"本机真实提交"保存在当前浏览器的 localStorage，仅同一浏览器可见。正式收集建议接入问卷星/腾讯问卷或后端服务。</div>
+</main>
+
+<script>
+// ---------- 仿真数据（固定种子，每次打开结果一致） ----------
+function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+var rnd=mulberry32(20261013);
+function pick(pairs){var r=rnd(),s=0;for(var i=0;i<pairs.length;i++){s+=pairs[i][1];if(r<=s)return pairs[i][0]}return pairs[pairs.length-1][0]}
+function pickN(pairs,n){var pool=pairs.slice(),out=[];while(out.length<n&&pool.length){var p=pick(pool.map(function(x){return[x[0],x[1]]}));out.push(p);pool=pool.filter(function(x){return x[0]!==p});var sum=pool.reduce(function(a,x){return a+x[1]},0)||1;pool=pool.map(function(x){return[x[0],x[1]/sum]})}return out}
+function score(mean){var v=mean+(rnd()-0.5)*1.8;return Math.max(1,Math.min(5,Math.round(v)))}
+
+var COLLEGES=['建筑与设计学院（B栋）','数学与统计学院（A栋）'];
+var OTHERS=['土木工程学院','商学院','机电工程学院','材料科学与工程学院'];
+var GOOD=['采光好，白天画图很舒服','楼层高，视野开阔，心情好','离食堂近，下课来很方便','展厅常换展，等人的时候有东西看','工作室氛围好，大家一起赶图','楼梯间安静，适合背书','空间大，桌椅够用','晚上十点前自习座位好找'];
+var BAD=['插座太少了，画图电脑没电','走廊灯光偏暗，晚上找教室费劲','一楼大厅冬天风大，门口没有门帘','讨论的声音会互相干扰，希望有讨论室','饮水机太少','桌椅高度不合适，久坐腰酸','WiFi 信号差','夏天西晒严重，下午教室很热','标识不清晰，第一次来找不到教室','模型室预约流程太麻烦'];
+var IDEA=['把一楼大厅改成共享自习区，加点桌椅和插座','走廊加长凳和绿植，变成休息节点','楼梯间做成小型讨论角，加隔音板','把闲置的角落地做成模型展示区','天台平台改成露天讨论区，加遮阳棚'];
+
+var SIM=[];
+var N=24;
+var now=Date.now();
+for(var i=0;i<N;i++){
+  var col=pick([[COLLEGES[0],.68],[COLLEGES[1],.22],['其他',.10]]);
+  var a={
+    q1:col==='其他'?COLLEGES[0]:col,
+    q2:pick([['大一',.15],['大二',.2],['大三',.3],['大四',.25],['研究生及以上',.1]]),
+    q3:pick([['几乎每天',.3],['每周3-4次',.3],['每周1-2次',.25],['偶尔（每周不到1次）',.15]]),
+    q4:pickN([[ '专业教室/工作室',.75],['普通教室',.55],['一楼大厅/公共区域',.25],['走廊/楼梯间',.2],['实验室/模型室',.3],['展厅/阅览室',.15]],2+Math.floor(rnd()*3)),
+    q5:pickN([['上课',.6],['自习/做作业',.7],['小组讨论',.45],['做模型/绘图',.5],['参加展览或活动',.15],['等人/休息',.3]],2+Math.floor(rnd()*3)),
+    q6:pickN([['上午（8:00-12:00）',.55],['下午（12:00-18:00）',.7],['晚上（18:00-22:00）',.65],['22:00以后',.15]],1+Math.floor(rnd()*3)),
+    q7:pick([['1小时以内',.15],['1-3小时',.4],['3-6小时',.3],['6小时以上',.15]]),
+    q8:pickN([['走廊的桌椅/长凳',.35],['楼梯间平台',.25],['一楼大厅',.3],['展厅附近',.2],['楼外台阶/门口',.15],['基本不会',.25]],1+Math.floor(rnd()*2)),
+    q9a:score(3.4),q9b:score(2.8),q9c:score(3.6),q9d:score(3.1),q9e:score(3.4),q9f:score(3.8),
+    q10:GOOD[Math.floor(rnd()*GOOD.length)],
+    q11:BAD[Math.floor(rnd()*BAD.length)],
+    q12:rnd()<.55?IDEA[Math.floor(rnd()*IDEA.length)]:'',
+    q13:rnd()<.3?'希望结果能真的推动改造':''
+  };
+  if(col==='其他')a.q1='其他学院：'+OTHERS[Math.floor(rnd()*OTHERS.length)];
+  SIM.push({ts:new Date(now-(N-i)*3.2*3600*1000).toISOString(),sim:true,a:a});
+}
+
+// ---------- 合并本机真实数据 ----------
+var REAL=[];
+try{REAL=JSON.parse(localStorage.getItem('lz_submissions')||'[]')}catch(e){}
+var ALL=SIM.concat(REAL);
+
+// ---------- 渲染 ----------
+function joinv(v){return Array.isArray(v)?v.join('；'):v}
+function countBy(key){
+  var m={},order=[];
+  ALL.forEach(function(r){var v=r.a[key];if(v==null)return;
+    (Array.isArray(v)?v:[v]).forEach(function(x){
+      if(!m[x]){m[x]=0;order.push(x)}m[x]++;
+    })});
+  return order.map(function(k){return[k,m[k]]});
+}
+function bars(id,data,total){
+  var el=document.getElementById(id);if(!el)return;
+  var max=Math.max.apply(null,data.map(function(d){return d[1]}),1);
+  el.innerHTML=data.sort(function(a,b){return b[1]-a[1]}).map(function(d){
+    return '<div class="bar"><div class="l">'+d[0]+'</div><div class="track"><div class="fill" style="width:'+(d[1]/max*100)+'%"></div></div><div class="v">'+d[1]+'</div></div>';
+  }).join('');
+}
+[['b1','q1'],['b2','q2'],['b3','q3'],['b4','q4'],['b5','q5'],['b6','q6'],['b7','q7'],['b8','q8']].forEach(function(p){bars(p[0],countBy(p[1]))});
+
+// 满意度
+var SAT=[['q9a','空间舒适度'],['q9b','家具和设备'],['q9c','到达便利性'],['q9d','安静程度'],['q9e','小组讨论方便程度'],['q9f','整体空间氛围']];
+document.getElementById('b9').innerHTML=SAT.map(function(s){
+  var vals=ALL.map(function(r){return parseFloat(r.a[s[0]])}).filter(function(v){return !isNaN(v)});
+  var avg=vals.length?(vals.reduce(function(a,b){return a+b},0)/vals.length):0;
+  return '<div class="bar"><div class="l">'+s[1]+'</div><div class="track"><div class="fill" style="width:'+(avg/5*100)+'%"></div></div><div class="v">'+avg.toFixed(1)+'</div></div>';
+}).join('');
+
+// 开放题
+function quotes(id,key){
+  var m={},order=[];
+  ALL.forEach(function(r){var v=r.a[key];if(!v)return;
+    if(!m[v]){m[v]=0;order.push(v)}m[v]++;});
+  order.sort(function(a,b){return m[b]-m[a]});
+  var el=document.getElementById(id);
+  el.innerHTML=order.length?order.slice(0,12).map(function(t){return '<li><i>×'+m[t]+'</i>'+t+'</li>'}).join(''):'<li class="empty">暂无</li>';
+}
+quotes('t10','q10');quotes('t11','q11');quotes('t12','q12');
+
+// 记录表
+document.getElementById('tb').innerHTML=ALL.slice(-12).reverse().map(function(r){
+  var d=new Date(r.ts);
+  function s(k){return r.a[k]||'—'}
+  return '<tr><td>'+(d.getMonth()+1)+'/'+d.getDate()+' '+String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0')+'</td><td>'+(r.sim?'<span class="tagv">仿真</span>':'<span class="tagv">真实</span>')+'</td><td>'+s('q1')+'</td><td>'+s('q2')+'</td><td>'+s('q3')+'</td><td>'+s('q7')+'</td></tr>';
+}).join('');
+
+// 顶部数字
+document.getElementById('cAll').textContent=ALL.length;
+document.getElementById('cSim').textContent=SIM.length;
+document.getElementById('cReal').textContent=REAL.length;
+
+// CSV 导出
+document.getElementById('csv').addEventListener('click',function(){
+  var head=['提交时间','来源','1学院','2年级','3频率','4空间','5活动','6时段','7时长','8非正式空间','9舒适度','9家具设备','9到达便利','9安静','9讨论方便','9氛围','10最满意','11待改进','12改造设想','13其他'];
+  var rows=ALL.map(function(r){
+    var s=function(k){var v=r.a[k];if(v==null)return'';return joinv(v)};
+    return [new Date(r.ts).toLocaleString('zh-CN'),r.sim?'仿真':'真实',s('q1'),s('q2'),s('q3'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
+  });
+  var csv=[head].concat(rows).map(function(row){return row.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
+  var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='立志楼问卷数据.csv';a.click();
+});
+
+document.getElementById('clear').addEventListener('click',function(){
+  if(confirm('确定清空本机的真实提交记录？（仿真数据不受影响）')){
+    localStorage.removeItem('lz_submissions');location.reload();
+  }
+});
+</script>
+</body>
+</html>
