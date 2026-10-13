@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海报F · 学在科大之立志楼（深海漂浮版）</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#e9eef0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#123240;display:flex;flex-direction:column;align-items:center;padding:34px 16px}
+  .poster{position:relative;width:750px;max-width:100%;min-height:1250px;padding:64px 56px 52px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 2px 24px rgba(10,40,60,.3);background:url('bg6.jpg') center top/cover no-repeat}
+  .poster::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(224,236,240,.5) 0%,rgba(224,236,240,.24) 22%,rgba(224,236,240,0) 40%,rgba(6,26,38,0) 56%,rgba(6,26,38,.42) 80%,rgba(6,26,38,.6) 100%)}
+  .poster>*{position:relative;z-index:1}
+  .kicker{font-size:14px;letter-spacing:.35em;color:#3d5a68;padding-top:6px}
+  h1{font-size:46px;font-weight:700;line-height:1.4;margin:24px 0 0;letter-spacing:.04em;color:#123240;white-space:nowrap}
+  h1 em{font-style:normal;color:#5a7c8a}
+  .subt{font-size:18px;color:#3a5563;margin-top:16px}
+  .mid{flex:1}
+  .rule{height:2px;background:rgba(255,255,255,.75);width:56px;margin:0 0 26px}
+  .lead{font-size:18px;line-height:2.05;color:rgba(255,255,255,.96);text-shadow:0 1px 8px rgba(4,24,36,.4)}
+  .lead b{font-weight:600;color:#ffe9a8;text-shadow:0 1px 8px rgba(4,24,36,.5)}
+  .qrzone{display:flex;align-items:center;gap:28px;margin-top:30px}
+  .qrzone img{width:178px;height:178px;display:block;background:#fff;padding:10px;border-radius:50%;box-shadow:0 4px 22px rgba(0,0,0,.35)}
+  .qrtext{font-size:15px;color:rgba(255,255,255,.94);line-height:2;text-shadow:0 1px 8px rgba(4,24,36,.4)}
+  .qrtext b{font-size:16px;display:block;color:#fff}
+  .url{word-break:break-all;color:rgba(255,255,255,.82);font-size:13px;background:rgba(6,26,38,.4);border-radius:999px;padding:3px 12px}
+  .foot{margin-top:32px;padding-top:22px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid rgba(255,255,255,.35)}
+  .foot .l{font-size:13.5px;color:rgba(255,255,255,.9);line-height:1.9;text-shadow:0 1px 6px rgba(4,24,36,.4)}
+  .foot .r{font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.3em;text-align:right}
+  .team{margin-top:16px;font-size:14px;color:rgba(255,255,255,.92);letter-spacing:.06em;text-shadow:0 1px 6px rgba(4,24,36,.45)}
+  .team span.lb{display:inline-block;width:5.5em;color:rgba(255,255,255,.65)}
+  .tip{margin-top:18px;font-size:13px;color:#7d8f98;text-align:center}
+  @media print{
+    body{background:#fff;padding:0}
+    .poster{box-shadow:none;width:100%}
+    .tip{display:none}
+  }
+  @media (max-width:600px){
+    .poster{padding:44px 28px 38px;min-height:1100px}
+    h1{font-size:30px;white-space:normal}
+    .lead{font-size:15.5px}
+    .qrzone img{width:136px;height:136px}
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="kicker">26级建筑学1班 · 2班 · 409-2课程小组</div>
+    <h1>学在科大之立志楼<em>。</em></h1>
+    <p class="subt">—— 立志楼（A栋 / B栋）学习空间使用情况调查</p>
+    <div class="mid"></div>
+    <div class="rule"></div>
+    <p class="lead">仰面漂着的时候，思绪最诚实——<br><b>立志楼哪里舒服，哪里别扭</b>，你早就知道。<br>老师和同学们，花 3 分钟，<br>把这份感受交给我们。</p>
+    <div class="qrzone">
+      <img src="qr.png" alt="问卷二维码">
+      <div class="qrtext">
+        <b>扫码填写问卷</b>
+        或访问链接<br>
+        <span class="url">https://laizhouningKING.github.io/lizhilou-survey/</span>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="l">湖南科技大学 · 立志楼（A栋 / B栋）<br>匿名填写 · 仅用于课程研究 · 约 3 分钟</div>
+      <div class="r">SPATIAL CAPTURE<br>SURVEY</div>
+    </div>
+    <div class="team"><span class="lb">项目团队</span>王越豪 · 贾子琰 · 赖周宁 · 高为政 · 范鋆泽 · 李熙哲</div>
+  </div>
+  <div class="tip">截图或打印即可分享 · A4 竖版打印效果最佳</div>
+</body>
+</html>
