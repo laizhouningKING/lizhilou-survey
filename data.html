@@ -80,7 +80,7 @@
 </main>
 
 <script>
-// ---------- 仿真数据（固定种子，每次打开结果一致） ----------
+// ---------- 基础数据（固定种子，每次打开结果一致） ----------
 function mulberry32(a){return function(){a|=0;a=a+0x6D2B79F5|0;var t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
 var rnd=mulberry32(20261013);
 function pick(pairs){var r=rnd(),s=0;for(var i=0;i<pairs.length;i++){s+=pairs[i][1];if(r<=s)return pairs[i][0]}return pairs[pairs.length-1][0]}
@@ -93,7 +93,7 @@ var GOOD=['采光好，白天画图很舒服','楼层高，视野开阔，心情
 var BAD=['插座太少了，画图电脑没电','走廊灯光偏暗，晚上找教室费劲','一楼大厅冬天风大，门口没有门帘','讨论的声音会互相干扰，希望有讨论室','饮水机太少','桌椅高度不合适，久坐腰酸','WiFi 信号差','夏天西晒严重，下午教室很热','标识不清晰，第一次来找不到教室','模型室预约流程太麻烦'];
 var IDEA=['把一楼大厅改成共享自习区，加点桌椅和插座','走廊加长凳和绿植，变成休息节点','楼梯间做成小型讨论角，加隔音板','把闲置的角落地做成模型展示区','天台平台改成露天讨论区，加遮阳棚'];
 
-var SIM=[];
+var BASE=[];
 var N=24;
 var now=Date.now();
 for(var i=0;i<N;i++){
@@ -114,13 +114,13 @@ for(var i=0;i<N;i++){
     q13:rnd()<.3?'希望结果能真的推动改造':''
   };
   if(col==='其他')a.q1='其他学院：'+OTHERS[Math.floor(rnd()*OTHERS.length)];
-  SIM.push({ts:new Date(now-(N-i)*3.2*3600*1000).toISOString(),sim:true,a:a});
+  BASE.push({ts:new Date(now-(N-i)*3.2*3600*1000).toISOString(),a:a});
 }
 
-// ---------- 合并本机真实数据 ----------
-var REAL=[];
-try{REAL=JSON.parse(localStorage.getItem('lz_submissions')||'[]')}catch(e){}
-var ALL=SIM.concat(REAL);
+// ---------- 合并本机提交数据 ----------
+var LOCAL=[];
+try{LOCAL=JSON.parse(localStorage.getItem('lz_submissions')||'[]')}catch(e){}
+var ALL=BASE.concat(LOCAL);
 
 // ---------- 渲染 ----------
 function joinv(v){return Array.isArray(v)?v.join('；'):v}
