@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>海报 · 立志楼学习空间使用情况调查</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:#f0f0f0;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#111;display:flex;flex-direction:column;align-items:center;padding:34px 16px}
+  .poster{width:750px;max-width:100%;background:#fff;padding:72px 64px 58px;display:flex;flex-direction:column;box-shadow:0 2px 24px rgba(0,0,0,.08)}
+  .kicker{font-size:15px;letter-spacing:.35em;color:#999}
+  h1{font-size:52px;font-weight:700;line-height:1.35;margin:26px 0 0}
+  h1 em{font-style:normal;color:#999}
+  .rule{height:2px;background:#111;width:56px;margin:36px 0}
+  .lead{font-size:19px;line-height:2;color:#333}
+  .lead b{background:linear-gradient(transparent 62%,#e8e8e8 62%)}
+  .tags{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+  .tags span{border:1px solid #ccc;border-radius:999px;padding:5px 16px;font-size:14px;color:#555}
+  .qrzone{display:flex;align-items:center;gap:34px;margin-top:52px}
+  .qrzone img{width:190px;height:190px;display:block}
+  .qrtext{font-size:15px;color:#333;line-height:2}
+  .qrtext b{font-size:16px;display:block;color:#111}
+  .url{word-break:break-all;color:#888;font-size:13.5px}
+  .foot{margin-top:auto;padding-top:48px;display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid #eee;margin-top:56px}
+  .foot .l{font-size:14px;color:#666;line-height:1.9}
+  .foot .r{font-size:13px;color:#bbb;letter-spacing:.2em}
+  .tip{margin-top:18px;font-size:13px;color:#999;text-align:center}
+  @media print{
+    body{background:#fff;padding:0}
+    .poster{box-shadow:none;width:100%}
+    .tip{display:none}
+  }
+  @media (max-width:600px){
+    .poster{padding:46px 30px 40px}
+    h1{font-size:38px}
+    .lead{font-size:16.5px}
+  }
+</style>
+</head>
+<body>
+  <div class="poster">
+    <div class="kicker">建筑学专业 ·「空间捕捉」课程小组</div>
+    <h1>立志楼学习空间<br>使用情况调查<em>。</em></h1>
+    <div class="rule"></div>
+    <p class="lead">你每天走过的走廊、待到深夜的教室、<b>画图时抢不到的插座</b>——<br>都值得被听见。<br>诚邀<b>老师和同学们</b>花 3 分钟，<br>告诉我们你与立志楼的真实故事。</p>
+    <div class="tags">
+      <span>匿名填写</span><span>仅用于课程研究</span><span>约 3 分钟</span><span>同学 &amp; 老师都可填</span>
+    </div>
+    <div class="qrzone">
+      <img src="qr.png" alt="问卷二维码">
+      <div class="qrtext">
+        <b>扫码填写问卷</b>
+        或访问链接<br>
+        <span class="url">https://laizhouningKING.github.io/lizhilou-survey/</span>
+      </div>
+    </div>
+    <div class="foot">
+      <div class="l">湖南科技大学 · 立志楼（A栋 / B栋）<br>你的每一条回答，都会成为空间改造的依据。</div>
+      <div class="r">THANK YOU</div>
+    </div>
+  </div>
+  <div class="tip">截图或打印即可分享 · A4 竖版打印效果最佳</div>
+</body>
+</html>
