@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>立志楼学习空间使用情况调查问卷</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;color:#111;background:#fff;line-height:1.65;font-size:15.5px}
+  main{max-width:660px;margin:0 auto;padding:48px 20px 90px}
+  .tag{color:#999;font-size:12px;letter-spacing:.3em}
+  h1{font-size:24px;font-weight:600;margin:10px 0 6px;line-height:1.4}
+  .meta{color:#888;font-size:13px;margin-bottom:22px}
+  .intro{background:#f7f7f7;border-radius:8px;padding:16px 18px;color:#444;font-size:14px;margin-bottom:36px}
+  h2{font-size:13px;color:#999;font-weight:500;margin:46px 0 4px;letter-spacing:.15em}
+  .q{margin-top:26px}
+  .q p.t{font-weight:600;margin-bottom:8px}
+  .q p.sub{font-size:13px;color:#888;margin-bottom:4px}
+  label.opt{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid #e6e6e6;border-radius:8px;margin:8px 0;cursor:pointer;transition:border-color .15s;font-size:14.5px}
+  label.opt:hover{border-color:#bbb}
+  label.opt:has(input:checked){border-color:#111}
+  input[type=radio],input[type=checkbox]{accent-color:#000;width:16px;height:16px;flex:none}
+  .other{display:none;border:1px solid #e6e6e6;border-radius:6px;padding:8px 10px;width:100%;margin-top:6px;font:inherit;font-size:14px}
+  table.rate{width:100%;border-collapse:collapse;margin-top:8px;font-size:13.5px}
+  table.rate th{font-weight:500;color:#888;padding:8px 4px;border-bottom:1px solid #eee;text-align:center}
+  table.rate td{padding:12px 4px;border-bottom:1px solid #eee;text-align:center}
+  table.rate td:first-child,table.rate th:first-child{text-align:left;max-width:230px;width:38%}
+  textarea{width:100%;border:1px solid #e6e6e6;border-radius:8px;padding:10px 12px;font:inherit;font-size:14px;min-height:72px;margin-top:8px;resize:vertical}
+  textarea:focus,.other:focus{outline:none;border-color:#111}
+  button#submit{width:100%;margin-top:44px;background:#111;color:#fff;border:none;border-radius:8px;padding:15px;font-size:16px;cursor:pointer;letter-spacing:.2em}
+  button#submit:hover{opacity:.85}
+  .note{color:#aaa;font-size:12px;text-align:center;margin-top:12px}
+  #ov{position:fixed;inset:0;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:20px;z-index:9}
+  #ov.on{display:flex}
+  .card{background:#fff;border-radius:12px;max-width:560px;width:100%;max-height:82vh;overflow:auto;padding:26px}
+  .card h3{margin-bottom:12px;font-size:17px}
+  .card p{font-size:13px;color:#888;margin-bottom:12px}
+  .card pre{white-space:pre-wrap;font-family:inherit;font-size:13.5px;color:#333;background:#f7f7f7;border-radius:8px;padding:14px;max-height:44vh;overflow:auto}
+  .card .btns{display:flex;gap:10px;margin-top:14px}
+  .card .btns button{margin-top:0;padding:11px;font-size:14px;letter-spacing:0}
+  .card .btns .ghost{background:#fff;color:#111;border:1px solid #ccc}
+</style>
+</head>
+<body>
+<main>
+  <div class="tag">调查问卷 · 初稿</div>
+  <h1>立志楼学习空间使用情况调查问卷</h1>
+  <div class="meta">匿名填写 · 仅用于课程研究 · 约 3 分钟</div>
+  <div class="intro">同学你好！我们是建筑学专业"空间捕捉"课程的小组，正在调查湖南科技大学立志楼（A栋/B栋）的学习空间使用情况。本问卷匿名填写，仅用于课程研究，大约需要3分钟。感谢你的参与！</div>
+
+  <form id="f">
+    <h2>第一部分 · 基本信息</h2>
+
+    <div class="q">
+      <p class="t">1. 你的学院是？</p>
+      <label class="opt"><input type="radio" name="q1" value="建筑与设计学院（B栋）" data-req="1">建筑与设计学院（B栋）</label>
+      <label class="opt"><input type="radio" name="q1" value="数学与统计学院（A栋）">数学与统计学院（A栋）</label>
+      <label class="opt"><input type="radio" name="q1" value="其他学院" data-other="o1">其他学院（请注明）</label>
+      <input class="other" id="o1" type="text" placeholder="请填写学院名称">
+    </div>
+
+    <div class="q">
+      <p class="t">2. 你的年级是？</p>
+      <label class="opt"><input type="radio" name="q2" value="大一" data-req="1">大一</label>
+      <label class="opt"><input type="radio" name="q2" value="大二">大二</label>
+      <label class="opt"><input type="radio" name="q2" value="大三">大三</label>
+      <label class="opt"><input type="radio" name="q2" value="大四">大四</label>
+      <label class="opt"><input type="radio" name="q2" value="研究生及以上">研究生及以上</label>
+    </div>
+
+    <div class="q">
+      <p class="t">3. 你平均每周来立志楼的频率是？</p>
+      <label class="opt"><input type="radio" name="q3" value="几乎每天" data-req="1">几乎每天</label>
+      <label class="opt"><input type="radio" name="q3" value="每周3-4次">每周3-4次</label>
+      <label class="opt"><input type="radio" name="q3" value="每周1-2次">每周1-2次</label>
+      <label class="opt"><input type="radio" name="q3" value="偶尔（每周不到1次）">偶尔（每周不到1次）</label>
+    </div>
+
+    <h2>第二部分 · 空间使用行为</h2>
+
+    <div class="q">
+      <p class="t">4. 你在立志楼最常使用哪些空间？<span style="color:#888;font-weight:400">（可多选）</span></p>
+      <label class="opt"><input type="checkbox" name="q4" value="专业教室/工作室" data-req="1">专业教室 / 工作室</label>
+      <label class="opt"><input type="checkbox" name="q4" value="普通教室">普通教室</label>
+      <label class="opt"><input type="checkbox" name="q4" value="一楼大厅/公共区域">一楼大厅 / 公共区域</label>
+      <label class="opt"><input type="checkbox" name="q4" value="走廊/楼梯间">走廊 / 楼梯间</label>
+      <label class="opt"><input type="checkbox" name="q4" value="实验室/模型室">实验室 / 模型室</label>
+      <label class="opt"><input type="checkbox" name="q4" value="展厅/阅览室">展厅 / 阅览室</label>
+      <label class="opt"><input type="checkbox" name="q4" value="其他" data-other="o4">其他（请注明）</label>
+      <input class="other" id="o4" type="text" placeholder="请填写">
+    </div>
+
+    <div class="q">
+      <p class="t">5. 你通常在立志楼进行哪些活动？<span style="color:#888;font-weight:400">（可多选）</span></p>
+      <label class="opt"><input type="checkbox" name="q5" value="上课" data-req="1">上课</label>
+      <label class="opt"><input type="checkbox" name="q5" value="自习/做作业">自习 / 做作业</label>
+      <label class="opt"><input type="checkbox" name="q5" value="小组讨论">小组讨论</label>
+      <label class="opt"><input type="checkbox" name="q5" value="做模型/绘图">做模型 / 绘图</label>
+      <label class="opt"><input type="checkbox" name="q5" value="参加展览或活动">参加展览或活动</label>
+      <label class="opt"><input type="checkbox" name="q5" value="等人/休息">等人 / 休息</label>
+      <label class="opt"><input type="checkbox" name="q5" value="其他" data-other="o5">其他（请注明）</label>
+      <input class="other" id="o5" type="text" placeholder="请填写">
+    </div>
+
+    <div class="q">
+      <p class="t">6. 你通常什么时间段在立志楼？<span style="color:#888;font-weight:400">（可多选）</span></p>
+      <label class="opt"><input type="checkbox" name="q6" value="上午（8:00-12:00）" data-req="1">上午（8:00-12:00）</label>
+      <label class="opt"><input type="checkbox" name="q6" value="下午（12:00-18:00）">下午（12:00-18:00）</label>
+      <label class="opt"><input type="checkbox" name="q6" value="晚上（18:00-22:00）">晚上（18:00-22:00）</label>
+      <label class="opt"><input type="checkbox" name="q6" value="22:00以后">22:00 以后</label>
+    </div>
+
+    <div class="q">
+      <p class="t">7. 你每次在立志楼通常待多长时间？</p>
+      <label class="opt"><input type="radio" name="q7" value="1小时以内" data-req="1">1 小时以内</label>
+      <label class="opt"><input type="radio" name="q7" value="1-3小时">1-3 小时</label>
+      <label class="opt"><input type="radio" name="q7" value="3-6小时">3-6 小时</label>
+      <label class="opt"><input type="radio" name="q7" value="6小时以上">6 小时以上</label>
+    </div>
+
+    <div class="q">
+      <p class="t">8. 除了教室，你还会在立志楼的哪些"非正式空间"学习或停留？<span style="color:#888;font-weight:400">（可多选）</span></p>
+      <label class="opt"><input type="checkbox" name="q8" value="走廊的桌椅/长凳" data-req="1">走廊的桌椅 / 长凳</label>
+      <label class="opt"><input type="checkbox" name="q8" value="楼梯间平台">楼梯间平台</label>
+      <label class="opt"><input type="checkbox" name="q8" value="一楼大厅">一楼大厅</label>
+      <label class="opt"><input type="checkbox" name="q8" value="展厅附近">展厅附近</label>
+      <label class="opt"><input type="checkbox" name="q8" value="楼外台阶/门口">楼外台阶 / 门口</label>
+      <label class="opt"><input type="checkbox" name="q8" value="基本不会">基本不会</label>
+    </div>
+
+    <h2>第三部分 · 空间感受与评价</h2>
+
+    <div class="q">
+      <p class="t">9. 你对立志楼以下方面的满意程度如何？</p>
+      <p class="sub">1 = 很不满意，5 = 很满意</p>
+      <table class="rate">
+        <tr><th>评价项目</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr>
+        <tr><td>空间舒适度（温度、通风、采光）</td><td><input type="radio" name="q9a" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9a" value="2" class="r"></td><td><input type="radio" name="q9a" value="3" class="r"></td><td><input type="radio" name="q9a" value="4" class="r"></td><td><input type="radio" name="q9a" value="5" class="r"></td></tr>
+        <tr><td>家具和设备（桌椅、插座、网络）</td><td><input type="radio" name="q9b" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9b" value="2" class="r"></td><td><input type="radio" name="q9b" value="3" class="r"></td><td><input type="radio" name="q9b" value="4" class="r"></td><td><input type="radio" name="q9b" value="5" class="r"></td></tr>
+        <tr><td>到达便利性（从宿舍/食堂过来的方便程度）</td><td><input type="radio" name="q9c" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9c" value="2" class="r"></td><td><input type="radio" name="q9c" value="3" class="r"></td><td><input type="radio" name="q9c" value="4" class="r"></td><td><input type="radio" name="q9c" value="5" class="r"></td></tr>
+        <tr><td>安静程度</td><td><input type="radio" name="q9d" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9d" value="2" class="r"></td><td><input type="radio" name="q9d" value="3" class="r"></td><td><input type="radio" name="q9d" value="4" class="r"></td><td><input type="radio" name="q9d" value="5" class="r"></td></tr>
+        <tr><td>小组讨论的方便程度</td><td><input type="radio" name="q9e" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9e" value="2" class="r"></td><td><input type="radio" name="q9e" value="3" class="r"></td><td><input type="radio" name="q9e" value="4" class="r"></td><td><input type="radio" name="q9e" value="5" class="r"></td></tr>
+        <tr><td>整体空间氛围</td><td><input type="radio" name="q9f" value="1" class="r" data-req="1"></td><td><input type="radio" name="q9f" value="2" class="r"></td><td><input type="radio" name="q9f" value="3" class="r"></td><td><input type="radio" name="q9f" value="4" class="r"></td><td><input type="radio" name="q9f" value="5" class="r"></td></tr>
+      </table>
+    </div>
+
+    <div class="q">
+      <p class="t">10. 你觉得立志楼最让你满意的一点是什么？</p>
+      <textarea name="q10" data-req="1" placeholder="请写下你的想法…"></textarea>
+    </div>
+
+    <div class="q">
+      <p class="t">11. 你觉得立志楼最需要改进的一点是什么？</p>
+      <textarea name="q11" data-req="1" placeholder="请写下你的建议…"></textarea>
+    </div>
+
+    <h2>第四部分 · 开放设想</h2>
+
+    <div class="q">
+      <p class="t">12. 如果可以改造立志楼的一个空间，你会选择哪里？想怎么改？<span style="color:#888;font-weight:400">（选填）</span></p>
+      <textarea name="q12" placeholder="选填"></textarea>
+    </div>
+
+    <div class="q">
+      <p class="t">13. 你还有什么想说的？<span style="color:#888;font-weight:400">（选填）</span></p>
+      <textarea name="q13" placeholder="选填"></textarea>
+    </div>
+
+    <button type="submit" id="submit">提交问卷</button>
+    <div class="note">匿名填写 · 数据仅用于课程研究</div>
+  </form>
+</main>
+
+<div id="ov">
+  <div class="card">
+    <h3>回答已整理</h3>
+    <p>请点击"复制结果"，把内容发送给调查小组（课程群 / 邮箱均可）。</p>
+    <pre id="summary"></pre>
+    <div class="btns">
+      <button type="button" id="copy">复制结果</button>
+      <button type="button" id="close" class="ghost">关闭</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // "其他"选项联动输入框
+  function syncOthers(){
+    document.querySelectorAll('.other').forEach(function(o){
+      var c=document.querySelector('input[data-other="'+o.id+'"]');
+      o.style.display=(c&&c.checked)?'block':'none';
+      if(!(c&&c.checked)) o.value='';
+    });
+  }
+  document.getElementById('f').addEventListener('change',syncOthers);
+
+  function fmtVal(name){
+    var els=document.querySelectorAll('input[name="'+name+'"]:checked');
+    if(!els.length)return null;
+    var vals=[];
+    els.forEach(function(e){
+      var v=e.value;
+      if(e.dataset.other){
+        var t=document.getElementById(e.dataset.other);
+        if(t&&t.value.trim())v+='：'+t.value.trim();
+      }
+      vals.push(v);
+    });
+    return vals.join('；');
+  }
+
+  document.getElementById('f').addEventListener('submit',function(e){
+    e.preventDefault();
+    // 校验必填
+    var missing=[];
+    document.querySelectorAll('input[data-req],textarea[data-req]').forEach(function(el){
+      var name=el.name; var q=el.closest('.q'); if(!q)return;
+      var title=q.querySelector('.t').innerText.replace(/（可多选）|（选填）/g,'').trim();
+      if(!missing.find(function(m){return m.name===name})){
+        var ok;
+        if(el.type==='checkbox'||el.type==='radio') ok=!!document.querySelector('input[name="'+name+'"]:checked');
+        else ok=el.value.trim().length>0;
+        if(!ok)missing.push({name:name,el:q,title:title});
+      }
+    });
+    if(missing.length){
+      alert('还有未完成的题目：\n\n· '+missing.map(function(m){return m.title}).join('\n· '));
+      missing[0].el.scrollIntoView({behavior:'smooth',block:'center'});
+      return;
+    }
+    var rows=[
+      ['q1','1. 你的学院'],['q2','2. 你的年级'],['q3','3. 每周来立志楼的频率'],
+      ['q4','4. 最常使用的空间'],['q5','5. 通常进行的活动'],['q6','6. 通常的时间段'],
+      ['q7','7. 每次停留时长'],['q8','8. 非正式空间'],
+      ['q9a','9. 满意度-空间舒适度'],['q9b','9. 满意度-家具和设备'],['q9c','9. 满意度-到达便利性'],
+      ['q9d','9. 满意度-安静程度'],['q9e','9. 满意度-小组讨论方便程度'],['q9f','9. 满意度-整体空间氛围'],
+      ['q10','10. 最满意的一点'],['q11','11. 最需改进的一点'],
+      ['q12','12. 改造设想（选填）'],['q13','13. 还想说的话（选填）']
+    ];
+    var lines=['【立志楼学习空间使用情况调查问卷】',''];
+    rows.forEach(function(r){
+      var v=fmtVal(r[0]);
+      if(v)lines.push(r[1]+'：'+v);
+    });
+    lines.push('');
+    lines.push('提交时间：'+new Date().toLocaleString('zh-CN'));
+    document.getElementById('summary').textContent=lines.join('\n');
+    document.getElementById('ov').classList.add('on');
+  });
+
+  document.getElementById('copy').addEventListener('click',function(){
+    var t=document.getElementById('summary').textContent,b=this;
+    function ok(){b.textContent='已复制 ✓';setTimeout(function(){b.textContent='复制结果'},1500)}
+    if(navigator.clipboard){navigator.clipboard.writeText(t).then(ok)}
+    else{var ta=document.createElement('textarea');ta.value=t;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta);ok()}
+  });
+  document.getElementById('close').addEventListener('click',function(){
+    document.getElementById('ov').classList.remove('on');
+  });
+</script>
+</body>
+</html>
