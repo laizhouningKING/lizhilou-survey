@@ -54,21 +54,22 @@
   <div class="sec"><h3>1. 学院分布</h3><div id="b1"></div></div>
   <div class="sec"><h3>2. 年级分布</h3><div id="b2"></div></div>
   <div class="sec"><h3>3. 每周来访频率</h3><div id="b3"></div></div>
+  <div class="sec"><h3>4. 前往方式</h3><div id="b3b"></div></div>
 
   <h2>空间使用行为</h2>
-  <div class="sec"><h3>4. 最常使用的空间（人次）</h3><div id="b4"></div></div>
-  <div class="sec"><h3>5. 通常进行的活动（人次）</h3><div id="b5"></div></div>
-  <div class="sec"><h3>6. 通常的时间段（人次）</h3><div id="b6"></div></div>
-  <div class="sec"><h3>7. 每次停留时长</h3><div id="b7"></div></div>
-  <div class="sec"><h3>8. 非正式空间使用（人次）</h3><div id="b8"></div></div>
+  <div class="sec"><h3>5. 最常使用的空间（人次）</h3><div id="b4"></div></div>
+  <div class="sec"><h3>6. 通常进行的活动（人次）</h3><div id="b5"></div></div>
+  <div class="sec"><h3>7. 通常的时间段（人次）</h3><div id="b6"></div></div>
+  <div class="sec"><h3>8. 每次停留时长</h3><div id="b7"></div></div>
+  <div class="sec"><h3>9. 非正式空间使用（人次）</h3><div id="b8"></div></div>
 
   <h2>满意度评价（均值 / 5）</h2>
   <div class="sec"><div id="b9"></div></div>
 
   <h2>开放题摘录</h2>
-  <div class="sec"><h3>10. 最满意的一点</h3><ul class="quotes" id="t10"></ul></div>
-  <div class="sec"><h3>11. 最需要改进的一点</h3><ul class="quotes" id="t11"></ul></div>
-  <div class="sec"><h3>12. 改造设想</h3><ul class="quotes" id="t12"></ul></div>
+  <div class="sec"><h3>11. 最满意的一点</h3><ul class="quotes" id="t10"></ul></div>
+  <div class="sec"><h3>12. 最需要改进的一点</h3><ul class="quotes" id="t11"></ul></div>
+  <div class="sec"><h3>13. 改造设想</h3><ul class="quotes" id="t12"></ul></div>
 
   <h2>最近提交记录</h2>
   <div class="sec"><table><thead><tr><th>时间</th><th>学院</th><th>年级</th><th>频率</th><th>时长</th></tr></thead><tbody id="tb"></tbody></table></div>
@@ -102,6 +103,7 @@ for(var i=0;i<N;i++){
     q1:col,
     q2:'大一',
     q3:pick([['几乎每天',.3],['每周3-4次',.3],['每周1-2次',.25],['偶尔（每周不到1次）',.15]]),
+    q3b:pick([['步行',.55],['骑行（自行车/电动车）',.22],['校园班车/公交',.18],['其他',.05]]),
     q4:pickN([[ '专业教室/工作室',.75],['普通教室',.55],['一楼大厅/公共区域',.25],['走廊/楼梯间',.2],['实验室/模型室',.3],['展厅/阅览室',.15]],2+Math.floor(rnd()*3)),
     q5:pickN([['上课',.6],['自习/做作业',.7],['小组讨论',.45],['做模型/绘图',.5],['参加展览或活动',.15],['等人/休息',.3]],2+Math.floor(rnd()*3)),
     q6:pickN([['上午（8:00-12:00）',.55],['下午（12:00-18:00）',.7],['晚上（18:00-22:00）',.65],['22:00以后',.15]],1+Math.floor(rnd()*3)),
@@ -139,7 +141,7 @@ function bars(id,data,total){
     return '<div class="bar"><div class="l">'+d[0]+'</div><div class="track"><div class="fill" style="width:'+(d[1]/max*100)+'%"></div></div><div class="v">'+d[1]+'</div></div>';
   }).join('');
 }
-[['b1','q1'],['b2','q2'],['b3','q3'],['b4','q4'],['b5','q5'],['b6','q6'],['b7','q7'],['b8','q8']].forEach(function(p){bars(p[0],countBy(p[1]))});
+[['b1','q1'],['b2','q2'],['b3','q3'],['b3b','q3b'],['b4','q4'],['b5','q5'],['b6','q6'],['b7','q7'],['b8','q8']].forEach(function(p){bars(p[0],countBy(p[1]))});
 
 // 满意度
 var SAT=[['q9a','空间舒适度'],['q9b','家具和设备'],['q9c','到达便利性'],['q9d','安静程度'],['q9e','小组讨论方便程度'],['q9f','整体空间氛围']];
@@ -180,10 +182,10 @@ document.getElementById('cAll').textContent=ALL.length;
 
 // CSV 导出
 document.getElementById('csv').addEventListener('click',function(){
-  var head=['提交时间','1学院','2年级','3频率','4空间','5活动','6时段','7时长','8非正式空间','9舒适度','9家具设备','9到达便利','9安静','9讨论方便','9氛围','10最满意','11待改进','12改造设想','13其他'];
+  var head=['提交时间','1学院','2年级','3频率','4前往方式','5空间','6活动','7时段','8时长','9非正式空间','10舒适度','11家具设备','12到达便利','13安静','14讨论方便','15氛围','16最满意','17待改进','18改造设想','19其他'];
   var rows=ALL.map(function(r){
     var s=function(k){var v=r.a[k];if(v==null)return'';return joinv(v)};
-    return [new Date(r.ts).toLocaleString('zh-CN'),s('q1'),s('q2'),s('q3'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
+    return [new Date(r.ts).toLocaleString('zh-CN'),s('q1'),s('q2'),s('q3'),s('q3b'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
   });
   var csv=[head].concat(rows).map(function(row){return row.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
   var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
