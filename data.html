@@ -63,7 +63,7 @@
   <div class="sec"><h3>8. 每次停留时长</h3><div id="b7"></div></div>
   <div class="sec"><h3>9. 非正式空间使用（人次）</h3><div id="b8"></div></div>
 
-  <h2>满意度评价（均值 / 5）</h2>
+  <h2>满意度评价（均值 / 3）</h2>
   <div class="sec"><div id="b9"></div></div>
 
   <h2>开放题摘录</h2>
@@ -107,7 +107,7 @@ for(var i=0;i<N;i++){
     q6:pickN([['上午（8:00-12:00）',.55],['下午（12:00-18:00）',.7],['晚上（18:00-22:00）',.65],['22:00以后',.15]],1+Math.floor(rnd()*3)),
     q7:pick([['1小时以内',.15],['1-3小时',.4],['3-6小时',.3],['6小时以上',.15]]),
     q8:pickN([['走廊的桌椅/长凳',.35],['楼梯间平台',.25],['一楼大厅',.3],['展厅附近',.2],['楼外台阶/门口',.15],['基本不会',.25]],1+Math.floor(rnd()*2)),
-    q9a:score(3.4),q9b:score(2.8),q9c:score(3.6),q9d:score(3.1),q9e:score(3.4),q9f:score(3.8),
+    q9a:score(2.4),q9b:score(2.0),q9c:score(2.5),q9d:score(2.2),q9e:score(2.4),q9f:score(2.6),
     q11:BAD[Math.floor(rnd()*BAD.length)],
     q13:rnd()<.3?'希望结果能真的推动改造':''
   };
@@ -144,7 +144,7 @@ var SAT=[['q9a','空间舒适度'],['q9b','家具和设备'],['q9c','到达便�
 document.getElementById('b9').innerHTML=SAT.map(function(s){
   var vals=ALL.map(function(r){return parseFloat(r.a[s[0]])}).filter(function(v){return !isNaN(v)});
   var avg=vals.length?(vals.reduce(function(a,b){return a+b},0)/vals.length):0;
-  return '<div class="bar"><div class="l">'+s[1]+'</div><div class="track"><div class="fill" style="width:'+(avg/5*100)+'%"></div></div><div class="v">'+avg.toFixed(1)+'</div></div>';
+  return '<div class="bar"><div class="l">'+s[1]+'</div><div class="track"><div class="fill" style="width:'+(avg/3*100)+'%"></div></div><div class="v">'+avg.toFixed(1)+'</div></div>';
 }).join('');
 
 // 开放题
