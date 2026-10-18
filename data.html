@@ -67,9 +67,7 @@
   <div class="sec"><div id="b9"></div></div>
 
   <h2>开放题摘录</h2>
-  <div class="sec"><h3>11. 最满意的一点</h3><ul class="quotes" id="t10"></ul></div>
-  <div class="sec"><h3>12. 最需要改进的一点</h3><ul class="quotes" id="t11"></ul></div>
-  <div class="sec"><h3>13. 改造设想</h3><ul class="quotes" id="t12"></ul></div>
+  <div class="sec"><h3>11. 最需要改进的一点</h3><ul class="quotes" id="t11"></ul></div>
 
   <h2>最近提交记录</h2>
   <div class="sec"><table><thead><tr><th>时间</th><th>学院</th><th>年级</th><th>频率</th><th>时长</th></tr></thead><tbody id="tb"></tbody></table></div>
@@ -110,9 +108,7 @@ for(var i=0;i<N;i++){
     q7:pick([['1小时以内',.15],['1-3小时',.4],['3-6小时',.3],['6小时以上',.15]]),
     q8:pickN([['走廊的桌椅/长凳',.35],['楼梯间平台',.25],['一楼大厅',.3],['展厅附近',.2],['楼外台阶/门口',.15],['基本不会',.25]],1+Math.floor(rnd()*2)),
     q9a:score(3.4),q9b:score(2.8),q9c:score(3.6),q9d:score(3.1),q9e:score(3.4),q9f:score(3.8),
-    q10:GOOD[Math.floor(rnd()*GOOD.length)],
     q11:BAD[Math.floor(rnd()*BAD.length)],
-    q12:rnd()<.55?IDEA[Math.floor(rnd()*IDEA.length)]:'',
     q13:rnd()<.3?'希望结果能真的推动改造':''
   };
   if(col==='其他')a.q1='其他学院：'+OTHERS[Math.floor(rnd()*OTHERS.length)];
@@ -160,7 +156,7 @@ function quotes(id,key){
   var el=document.getElementById(id);
   el.innerHTML=order.length?order.slice(0,12).map(function(t){return '<li><i>×'+m[t]+'</i>'+t+'</li>'}).join(''):'<li class="empty">暂无</li>';
 }
-quotes('t10','q10');quotes('t11','q11');quotes('t12','q12');
+quotes('t11','q11');
 
 // 记录表
 document.getElementById('tb').innerHTML=ALL.slice(-12).reverse().map(function(r){
@@ -182,10 +178,10 @@ document.getElementById('cAll').textContent=ALL.length;
 
 // CSV 导出
 document.getElementById('csv').addEventListener('click',function(){
-  var head=['提交时间','1学院','2年级','3频率','4前往方式','5空间','6活动','7时段','8时长','9非正式空间','10舒适度','11家具设备','12到达便利','13安静','14讨论方便','15氛围','16最满意','17待改进','18改造设想','19其他'];
+  var head=['提交时间','1学院','2年级','3频率','4前往方式','5空间','6活动','7时段','8时长','9非正式空间','10舒适度','11家具设备','12到达便利','13安静','14讨论方便','15氛围','16待改进','17其他'];
   var rows=ALL.map(function(r){
     var s=function(k){var v=r.a[k];if(v==null)return'';return joinv(v)};
-    return [new Date(r.ts).toLocaleString('zh-CN'),s('q1'),s('q2'),s('q3'),s('q3b'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q10'),s('q11'),s('q12'),s('q13')];
+    return [new Date(r.ts).toLocaleString('zh-CN'),s('q1'),s('q2'),s('q3'),s('q3b'),s('q4'),s('q5'),s('q6'),s('q7'),s('q8'),s('q9a'),s('q9b'),s('q9c'),s('q9d'),s('q9e'),s('q9f'),s('q11'),s('q13')];
   });
   var csv=[head].concat(rows).map(function(row){return row.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n');
   var blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8'});
